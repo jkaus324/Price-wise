@@ -50,7 +50,7 @@ export async function scrapeAmazonProduct(url: string) {
             '{}'
 
         const imageUrls = Object.keys(JSON.parse(images));
-        
+
         const currency = extractCurrency($('.a-price-symbol'))
         const discountRate = $('.savingsPercentage').text().replace(/[-%]/g, "");
 
@@ -74,7 +74,7 @@ export async function scrapeAmazonProduct(url: string) {
             averagePrice: Number(currentPrice) || Number(originalPrice),
         }
 
-        console.log(data);
+        return data;
     } catch (err: any) {
         throw new Error(`New error found ${err.message}`);
     }
